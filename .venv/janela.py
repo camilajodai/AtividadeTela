@@ -157,6 +157,7 @@ class GUI(QWidget):
         
         label_meio.setLayout(layout_hor_lb_meio)
         self.setLayout(layout_principal)
+        
         # -----------------------------------------------------------------------------------------------------------------------
 app = QApplication(sys.argv)
 janela = GUI ()
