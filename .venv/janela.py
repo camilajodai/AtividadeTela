@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget,QApplication,QLabel,QLineEdit,QTableWidget,QTableWidgetItem,QHBoxLayout,QVBoxLayout,QCheckBox
+from PyQt5.QtWidgets import QWidget,QApplication,QLabel,QLineEdit,QTableWidget,QTableWidgetItem,QHBoxLayout,QVBoxLayout,QCheckBox,QPushButton
 
 class GUI(QWidget):
     def __init__(self):
@@ -151,11 +151,78 @@ class GUI(QWidget):
         layout_hor_lb_superior.addLayout(layout_ver_col_direita)
         # ----------------------------------------------------------------------------------------
         label_superior.setLayout(layout_hor_lb_superior)
-        # -----------------------------------------------------------------------------------------------------------------------
-        layout_hor_lb_meio = QHBoxLayout()
-        # colunas
+        # ---------------------------------------------------------------------------------------------------------------------
         
+        # Criando layout horizontal do meio
+        layout_hor_lb_meio = QHBoxLayout()
+       
+        # Criando labels colunas para separar
+        label_col2_esquerda = QLabel()
+        label_col2_meio = QLabel()
+        label_col2_direita = QLabel()
+ 
+        # Customizando as labels de separamento
+        label_col2_esquerda.setStyleSheet("QLabel{background-color: red}")
+        label_col2_meio.setStyleSheet("QLabel{background-color: red}")
+        label_col2_direita.setStyleSheet("QLabel{background-color: red}")
+ 
+        # Adicionando as labels de separamento ao layout horizontal do meio
+        layout_hor_lb_meio.addWidget(label_col2_esquerda)
+        layout_hor_lb_meio.addWidget(label_col2_meio)
+        layout_hor_lb_meio.addWidget(label_col2_direita)
+ 
+        # Setando o layout horizontal do meio na label do meio
         label_meio.setLayout(layout_hor_lb_meio)
+ 
+        # Criando layout horizontal
+        layout_hor_lb_meio_divisao = QHBoxLayout()
+ 
+        label_col2_esquerda.setLayout(layout_hor_lb_meio_divisao)
+ 
+        label_ver_divisao = QLabel()
+        label_ver_divisao2 = QLabel()
+ 
+        layout_hor_lb_meio_divisao.addWidget(label_ver_divisao)
+        layout_hor_lb_meio_divisao.addWidget(label_ver_divisao2)
+ 
+        label_ver_divisao.setStyleSheet("QLabel{background-color: pink}")
+        label_ver_divisao2.setStyleSheet("QLabel{background-color: pink}")
+        
+        layout_hor_lb_meio_divisao = QVBoxLayout()
+        layout_ver_divisao2 = QVBoxLayout()
+        
+        label_data1 = QLabel ("Data Desejada De:")
+        label_edit1 = QLineEdit()
+        label_data2 = QLabel ("Data Desejada Até:")
+        label_edit2 = QLineEdit()
+        
+        layout_hor_lb_meio_divisao.addWidget(label_data1)
+        layout_hor_lb_meio_divisao.addWidget(label_edit1)
+        
+        # TABELA
+        layout_hor_lb_meio = QHBoxLayout()
+        label_tabela.setLayout(layout_hor_lb_meio)
+        
+        tabela = QTableWidget()
+        tabela.setColumnCount(10)
+        tabela.setRowCount(50)
+        cabecalho = ["Estabelecimento","Código","Número","Data Compra","Data Desejada","Produto","Variante","Quantidade","Unidade","Usuário"]
+        tabela.setHorizontalHeaderLabels(cabecalho)
+        
+        layout_hor_lb_meio.addWidget(tabela)
+    
+        # ---------------------------------------------------------------------------------------------------------------------
+        layout_lor_lb_rodape = QHBoxLayout()
+        label_rodape.setLayout(layout_lor_lb_rodape)
+        
+        btn_marcar = QPushButton("Marcar Todos")
+        btn_desmarcar = QPushButton("Desmarcar Todos")
+        btn_marcar.setFixedWidth(100)
+        btn_marcar.setFixedHeight(50)
+        btn_desmarcar.setFixedWidth(100)
+        btn_desmarcar.setFixedHeight(50)
+        layout_lor_lb_rodape.addWidget(btn_marcar)
+        layout_lor_lb_rodape.addWidget(btn_desmarcar)
         self.setLayout(layout_principal)
         
         # -----------------------------------------------------------------------------------------------------------------------
